@@ -1,0 +1,35 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minTime: 2
+
+lengths = [10, 100, 200, 500, 1000, 2000]
+
+ps.each lengths, (length) ->
+  console.log 'length:', length
+  code = ('\n').repeat(length - 1)
+
+  ps 'for loop', ->
+    n = 1
+    i = -1
+    while ++i < code.length
+      n += 1 if code[i] is '\n'
+    return
+
+  ps 'String#indexOf', ->
+    n = 1
+    i = -1
+    while (i = code.indexOf '\n', i + 1) isnt -1
+      n += 1
+    return
+
+  ps 'charCodeAt loop', ->
+    n = 1
+    i = -1
+    while ++i < code.length
+      n += 1 if code[i].charCodeAt(0) is 10
+    return
+
+  ps 'String#split', ->
+    code.split('\n').length
