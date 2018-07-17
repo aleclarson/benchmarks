@@ -1,0 +1,57 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minSamples: 200
+
+key = 'path.to.property'
+path = null
+results = []
+
+ps 'split', ->
+  path = key.split '.'
+  results.push path
+  return
+
+cache = Object.create null
+ps 'split (cached)', ->
+  if !path = cache[key]
+    cache[key] = path = key.split '.'
+  results.push path
+  return
+
+regex = /[^\.]+/g
+cache2 = Object.create null
+ps 'regex (cached)', ->
+  if !path = cache2[key]
+    cache2[key] = path = []
+    while match = regex.exec key
+      path.push match[0]
+
+  results.push path
+  return
+
+cache3 = Object.create null
+ps 'indexOf (cached)', ->
+  if !path = cache3[key]
+    cache3[key] = path = []
+    while true
+      i = key.indexOf '.', ++j
+      if i == -1
+        path.push key.slice j
+        break
+      path.push key.slice j, i
+      j = i
+
+  results.push path
+  return
+
+cache4 = Object.create null
+ps 'indexOf + split (cached)', ->
+  if !path = cache4[key]
+    cache4[key] = path =
+      if key.indexOf('.') == -1
+      then key else key.split '.'
+  results.push path
+  return
+
