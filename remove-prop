@@ -1,0 +1,61 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minTime: 0
+  minSamples: 10
+
+ids = [
+  20
+  0
+  12
+  11
+  19
+  14
+  15
+  3
+  2
+  6
+]
+cache = {}
+do ->
+  for id in ids
+    cache[id] = {id}
+  return
+
+do ->
+  obj = {}
+  for id in ids
+    obj[id] = cache[id]
+
+  ps 'delete obj[key]', ->
+    ids.forEach (id) ->
+      delete obj[id]
+
+do ->
+  arr = []
+  for id in ids
+    arr[id] = cache[id]
+
+  ps 'delete array[key] (sparse)', ->
+    ids.forEach (id) ->
+      delete arr[id]
+
+do ->
+  arr = []
+  for id in ids
+    arr[id] = cache[id]
+
+  ps 'array.splice (sparse)', ->
+    ids.forEach (id) ->
+      arr.splice id, 1
+
+do ->
+  map = new Map
+  for id in ids
+    map.set cache[id], true
+
+  ps 'Map.delete', ->
+    ids.forEach (id) ->
+      map.delete cache[id]
+
