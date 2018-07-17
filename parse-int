@@ -1,0 +1,47 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+vals = []
+do ->
+  for i in [0...5]
+    vals.push Math.random().toString().slice(3, 5)
+  return
+
+ps.configure
+  minSamples: 100
+
+ps 'parseInt()', ->
+  for val in vals
+    parseInt val
+  return
+
+ps 'parseFloat()', ->
+  for val in vals
+    parseFloat val
+  return
+
+ps 'Number()', ->
+  for val in vals
+    Number val
+  return
+
+ps 'Math.floor()', ->
+  for val in vals
+    Math.floor val
+  return
+
+ps 'bitwise NOT', ->
+  for val in vals
+    ~~val
+  return
+
+ps 'multiply', ->
+  for val in vals
+    1 * val
+  return
+
+ps 'plus', ->
+  for val in vals
+    +val
+  return
+
