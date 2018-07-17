@@ -1,0 +1,39 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+arr = []
+do ->
+  # create an array of 400 random strings
+  size = 400
+  for i in [0...size]
+    arr.push String Math.random()
+
+  # insert 200 duplicate strings into random positions
+  for n in [0...200]
+    i = Math.round Math.random() * (size + n)
+    j = Math.round Math.random() * (size + n)
+    arr.splice j, 0, arr[i]
+  return
+
+ps 'new Set + forEach', ->
+  res = ''
+  (new Set arr).forEach (str) ->
+    res += str + ','
+  res
+
+ps 'for..in + plain object', ->
+  res = ''
+  map = Object.create null
+  for str in arr
+    if !map[str]
+      map[str] = true
+      res += str + ','
+  res
+
+ps 'filter + forEach', ->
+  res = ''
+  dedupe = (str, i, arr) ->
+    i is arr.indexOf(str)
+  arr.filter(dedupe).forEach (str) ->
+    res += str + ','
+  res
