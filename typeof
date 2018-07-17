@@ -1,0 +1,49 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minSamples: 100
+
+types1 =
+  '[object Array]': 'array'
+  '[object Arguments]': 'arguments'
+  '[object Object]': 'object'
+  '[object RegExp]': 'regexp'
+  '[object Error]': 'error'
+  '[object Date]': 'date'
+
+types2 =
+  Array: 'array'
+  Arguments: 'arguments'
+  Object: 'object'
+  RegExp: 'regexp'
+  Error: 'error'
+  Date: 'date'
+
+toString = Object::toString
+
+values = [
+  [], (-> arguments)(), {}, /./g, new Error(), new Date()
+]
+
+ps 'toString + switch', ->
+  values.forEach (value) ->
+    switch toString.call value
+      when '[object Array]' then 'array'
+      when '[object Arguments]' then 'arguments'
+      when '[object Object]' then 'object'
+      when '[object RegExp]' then 'regexp'
+      when '[object Error]' then 'error'
+      when '[object Date]' then 'date'
+
+ps 'toString + lookup', ->
+  values.forEach (value) ->
+    types1[toString.call value]
+
+ps 'toString + slice + lookup', ->
+  values.forEach (value) ->
+    types2[toString.call(value).slice 8, -1]
+
+ps 'toString + slice + toLowerCase', ->
+  values.forEach (value) ->
+    toString.call(value).slice(8, -1).toLowerCase()
