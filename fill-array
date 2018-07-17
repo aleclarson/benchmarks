@@ -1,0 +1,22 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minTime: 2
+
+lengths = [10, 100, 200, 500, 1000, 2000]
+emptyArray = []
+
+ps.each lengths, (length) ->
+  console.log 'length:', length
+
+  ps 'Array#fill', ->
+    new Array(length).fill emptyArray
+
+  ps 'for loop', ->
+    arr = []
+    i = length
+    while --i isnt -1
+      arr[i] = emptyArray
+    return
+
