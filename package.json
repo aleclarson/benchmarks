@@ -1,0 +1,9 @@
+{
+  "name": "benchmarks",
+  "version": "0.0.0",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "persec": "^1.0.0",
+    "randstr": "^1.0.6"
+  }
+}
