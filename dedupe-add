@@ -1,0 +1,62 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+vals = []
+do ->
+  cache = {}
+  for i in [0..10]
+    cache[i] = {id: i}
+  for i in [0...200]
+    i = Math.round Math.random() * 10
+    vals.push cache[i]
+  return
+
+ps 'plain object', ->
+  obj = {}
+  for val in vals
+    if !obj[val.id]
+      obj[val.id] = val
+  return
+
+ps 'object + hasOwn', ->
+  obj = {}
+  for val in vals
+    if !obj.hasOwnProperty(val.id)
+      obj[val.id] = val
+  return
+
+ps 'sparse array', ->
+  arr = []
+  for val in vals
+    if !arr[val.id]
+      arr[val.id] = val
+  return
+
+ps 'array + indexOf', ->
+  arr = []
+  for val in vals
+    if arr.indexOf(val) is -1
+      arr.push val
+  return
+
+ps 'Set.add', ->
+  set = new Set
+  for val in vals
+    if !set.has val
+      set.add val
+  return
+
+ps 'Map.set + string key', ->
+  map = new Map
+  for val in vals
+    if !map.has val.id
+      map.set val.id, val
+  return
+
+ps 'Map.set + object key', ->
+  map = new Map
+  for val in vals
+    if !map.has val
+      map.set val, true
+  return
+
