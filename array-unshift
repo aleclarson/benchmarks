@@ -1,0 +1,41 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+vals = new Array(5).fill().map -> {}
+
+ps.configure
+  minTime: 2
+
+ps 'unshift', ->
+  arr = []
+  for val in vals
+    arr.unshift val
+  return
+
+ps 'sparse assign (reverse)', ->
+  len = vals.length
+  arr = new Array len
+  i = len; while --i isnt -1
+    arr[i] = vals[i]
+  return
+
+ps 'push', ->
+  arr = []
+  for val in vals
+    arr.push val
+  return
+
+ps 'assign', ->
+  arr = []
+  len = vals.length
+  i = -1; while ++i isnt len
+    arr[i] = vals[i]
+  return
+
+ps 'assign (reverse)', ->
+  arr = []
+  i = vals.length
+  while --i isnt -1
+    arr[i] = vals[i]
+  return
+
