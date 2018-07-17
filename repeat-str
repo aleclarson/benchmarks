@@ -1,0 +1,32 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minTime: 2
+
+lengths = [10, 100, 200, 500, 1000, 2000]
+identity = ';AACA'
+
+ps.each lengths, (length) ->
+  console.log 'length:', length
+
+  ps 'Array#fill + join', ->
+    arr = new Array(length).fill identity
+    arr[0] = 'AAAA'
+    arr.join ''
+
+  ps 'assignment loop', ->
+    str = 'AAAA'
+    i = 0; while ++i < length
+      str += identity
+    return
+
+  ps 'Array#push loop + Array#join', ->
+    arr = ['AAAA']
+    i = 0; while ++i < length
+      arr.push identity
+    arr.join ''
+
+  ps 'String#repeat', ->
+    'AAAA' + identity.repeat(length - 1)
+
