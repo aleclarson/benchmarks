@@ -1,0 +1,47 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minSamples: 300
+
+getChar = ->
+  String.fromCharCode 32 + Math.round Math.random() * (126 - 32)
+
+re1 = /[0-9a-z]/i
+re2 = /[0-9A-Za-z]/
+
+str = ''
+arr = []
+do ->
+  for i in [48..57]
+    str += String.fromCharCode i
+    arr.push i
+  for i in [65..90]
+    str += String.fromCharCode i
+    arr.push i
+  for i in [97..122]
+    str += String.fromCharCode i
+    arr.push i
+  return
+
+ch = getChar()
+console.log 'char:', JSON.stringify(ch)
+
+ps 'String#charCodeAt', ->
+  code = ch.charCodeAt(0)
+  (code >= 48 and code <= 57) or # 0-9
+  (code >= 65 and code <= 90) or # A-Z
+  (code >= 97 and code <= 122)   # a-z
+
+ps 'String#indexOf', ->
+  str.indexOf(ch) isnt -1
+
+ps 'String#charCodeAt + Array#indexOf', ->
+  arr.indexOf(ch.charCodeAt 0) isnt -1
+
+ps 'RegExp#test (case insensitive)', ->
+  re1.test ch
+
+ps 'RegExp#test (case sensitive)', ->
+  re2.test ch
+
