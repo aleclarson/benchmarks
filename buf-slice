@@ -1,0 +1,17 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+ps.configure
+  minTime: 2
+
+buf = Buffer.from 'x'.repeat(100)
+
+ps 'slice + toString', ->
+  buf.slice(25, 75).toString('utf8')
+
+ps 'toString + slice', ->
+  buf.toString('utf8').slice(25, 75)
+
+ps 'toString(enc, start, end)', ->
+  buf.toString('utf8', 25, 75)
+
