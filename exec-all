@@ -1,0 +1,148 @@
+#!/usr/bin/env node
+const ps = require('persec');
+const randstr = require('randstr');
+
+const manyMatches = randstr(50, '1234567890 ');
+const oneMatch = randstr(23, 'ab cd') + '123' + randstr(22, 'ab cd');
+const noMatch = randstr(50, 'abcdef +-');
+
+const cases = [
+  ['empty string', /\d+/, ''],
+  ['undefined string', /\d+/, undefined],
+  ['no match', /\d+/, noMatch],
+  ['no match (global)', /\d+/g, noMatch],
+  ['one match', /\d+/, oneMatch],
+  ['one match (global)', /\d+/g, oneMatch],
+  ['many matches', /\d+/, manyMatches],
+  ['many matches (global)', /\d+/g, manyMatches],
+];
+
+ps.configure({
+  minSamples: 50,
+});
+
+process.nextTick(() => {
+  const results = [];
+  ps.each(cases, function([msg, regexp, string]) {
+    console.log('\n%s %O\n%O', msg, regexp, string);
+    versions.forEach(function(func, i) {
+      ps(i == 0 ? 'original' : 'patch' + i, function() {
+        results.push(func(regexp, string));
+      });
+    });
+  });
+});
+
+const versions = [
+  // original version
+  function(regexp, string) {
+    var match, matches = [];
+
+    if (!regexp.global) {
+      match = regexp.exec(string);
+      return match ? [match] : [];
+    }
+
+    while (match = regexp.exec(string)) {
+      matches.push(match);
+      if (match[0] == '') {
+        break;
+      }
+    }
+
+    return matches;
+  },
+  // optimize non-global
+  function(regexp, string) {
+    if (!regexp.global) {
+      var match = regexp.exec(string);
+      return match ? [match] : [];
+    }
+
+    var matches = [];
+    while (match = regexp.exec(string)) {
+      matches.push(match);
+      if (match[0] == '') {
+        break;
+      }
+    }
+
+    return matches;
+  },
+  // advance one character if match is an empty string
+  function(regexp, string) {
+    if (!regexp.global) {
+      var match = regexp.exec(string);
+      return match ? [match] : [];
+    }
+
+    var matches = [];
+    while (match = regexp.exec(string)) {
+      matches.push(match);
+      if (match[0] === '') {
+        regexp.lastIndex++;
+      }
+    }
+
+    return matches;
+  },
+  // optimize falsy string
+  function(regexp, string) {
+    if (!string) return [];
+
+    if (!regexp.global) {
+      var match = regexp.exec(string);
+      return match ? [match] : [];
+    }
+
+    var matches = [];
+    while (match = regexp.exec(string)) {
+      matches.push(match);
+      if (match[0] === '') {
+        regexp.lastIndex++;
+      }
+    }
+
+    return matches;
+  },
+  // optimize first match
+  function(regexp, string) {
+    if (!string) return [];
+
+    var match = regexp.exec(string);
+    if (!match) return [];
+    if (!regexp.global) {
+      return [match];
+    }
+
+    var matches = [match];
+    while (match = regexp.exec(string)) {
+      matches.push(match);
+      if (match[0] === '') {
+        regexp.lastIndex++;
+      }
+    }
+
+    return matches;
+  },
+  // optimize match loop
+  function(regexp, string) {
+    if (!string) return [];
+
+    var match = regexp.exec(string);
+    if (!match) return [];
+    if (!regexp.global) {
+      return [match];
+    }
+
+    var matches = [match], i = 1;
+    while (match = regexp.exec(string)) {
+      matches[i++] = match;
+      if (match[0] === '') {
+        regexp.lastIndex++;
+      }
+    }
+
+    return matches;
+  },
+];
