@@ -15,9 +15,11 @@ const cases = [
   ['one match (global)', /\d+/g, oneMatch],
   ['many matches', /\d+/, manyMatches],
   ['many matches (global)', /\d+/g, manyMatches],
+  ['empty match', /1?/g, '1 1 1 1'],
 ];
 
 ps.configure({
+  minTime: 0,
   minSamples: 50,
 });
 
@@ -34,7 +36,7 @@ process.nextTick(() => {
 });
 
 const versions = [
-  // original version
+  // advance one character if match is an empty string
   function(regexp, string) {
     var match, matches = [];
 
@@ -45,8 +47,8 @@ const versions = [
 
     while (match = regexp.exec(string)) {
       matches.push(match);
-      if (match[0] == '') {
-        break;
+      if (match[0] === '') {
+        regexp.lastIndex++;
       }
     }
 
@@ -54,25 +56,9 @@ const versions = [
   },
   // optimize non-global
   function(regexp, string) {
+    var match;
     if (!regexp.global) {
-      var match = regexp.exec(string);
-      return match ? [match] : [];
-    }
-
-    var matches = [];
-    while (match = regexp.exec(string)) {
-      matches.push(match);
-      if (match[0] == '') {
-        break;
-      }
-    }
-
-    return matches;
-  },
-  // advance one character if match is an empty string
-  function(regexp, string) {
-    if (!regexp.global) {
-      var match = regexp.exec(string);
+      match = regexp.exec(string);
       return match ? [match] : [];
     }
 
