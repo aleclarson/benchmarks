@@ -1,0 +1,28 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+len = 500
+vals = []
+spar = []
+
+do ->
+  # fill the array
+  for i in [0...len]
+    vals[i] = i
+
+  # randomize the array
+  vals.sort (a, b) ->
+    Math.random() >= 0.5 and -1 or 1
+
+  for val in vals
+    spar[val] = {}
+  return
+
+index = -> Math.floor Math.random() * len
+
+ps 'indexOf', ->
+  vals.indexOf index()
+
+ps 'sparse', ->
+  spar[index()]
+
