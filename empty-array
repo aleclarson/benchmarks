@@ -1,0 +1,41 @@
+#!/usr/bin/env coffee
+ps = require 'persec'
+
+create = ->
+  {} for i in [0...10]
+
+ps.configure
+  minTime: 0
+  minSamples: 300
+
+ps 'delete', ->
+  arr = create()
+  arr.forEach ->
+  i = arr.length
+  delete arr[i] while --i isnt -1
+  return
+
+ps 'length = 0', ->
+  arr = create()
+  arr.forEach ->
+  arr.length = 0
+  return
+
+ps 'splice', ->
+  arr = create()
+  arr.forEach ->
+  arr.slice 0, arr.length
+  return
+
+ps 'pop', ->
+  arr = create()
+  arr.forEach ->
+  arr.pop() while arr.length
+  return
+
+ps 'new', ->
+  arr = create()
+  arr.forEach ->
+  arr = []
+  return
+
