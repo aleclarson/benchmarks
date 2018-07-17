@@ -1,0 +1,67 @@
+#!/usr/bin/env coffee
+chalk = require 'chalk'
+ps = require 'persec'
+
+ps.configure
+  minTime: 0
+  minSamples: 1
+
+vals = []
+do ->
+  for i in [0...30]
+    val = Math.floor 100000 * Math.random()
+    vals.push val if vals.indexOf(val) is -1
+  console.log 'number of values:', vals.length
+  console.log chalk.grey JSON.stringify vals
+  return
+
+ps '[].sort()', ->
+  arr = []
+  for val in vals
+    arr.push val
+  arr.sort compare
+  return
+
+ps 'binary search + [].splice()', ->
+  sum = 0
+  arr = []
+  for val in vals
+    low = 0
+    high = arr.length
+    loops = 0
+    while low < high
+      mid = (low + high) >>> 1
+      if arr[mid] < val
+      then low = mid + 1
+      else high = mid
+      loops += 1
+    sum += loops
+    # console.log 'binary:', loops, 'cycles'
+    arr.splice low, 0, val
+  console.log 'binary:', sum / vals.length, 'cycles (average)'
+  return
+
+ps 'linear search + [].splice()', ->
+  sum = 0
+  arr = []
+  for val in vals
+    i = -1
+    len = arr.length
+    loops = 0
+    while ++i < len
+      loops += 1
+      break if arr[i] > val
+    sum += loops
+    # console.log 'linear:', loops, 'cycles'
+    arr.splice i, 0, val
+  console.log 'linear:', sum / vals.length, 'cycles (average)'
+  return
+
+compare = (a, b) -> a - b
+
+linearSearch = (vals, val) ->
+  i
+
+binarySearch = (vals, val) ->
+  low
+
