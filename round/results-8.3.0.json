@@ -1,0 +1,22 @@
+{
+  "0": {
+    "round to 1 decimal": "324,551,236",
+    "round to 2 decimals": "322,467,799",
+    "round to 3 decimals": "327,300,585"
+  },
+  "1.005": {
+    "round to 1 decimal": "329,853,124",
+    "round to 2 decimals": "301,647,333",
+    "round to 3 decimals": "285,063,355"
+  },
+  "1e19": {
+    "round to 1 decimal": "302,923,843",
+    "round to 2 decimals": "258,725,363",
+    "round to 3 decimals": "54,645,954"
+  },
+  "1/3": {
+    "round to 1 decimal": "287,346,988",
+    "round to 2 decimals": "300,216,593",
+    "round to 3 decimals": "299,090,602"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "1": {
+    "string.split": "5,176,290",
+    "string.split + modulo": "95,352,626",
+    "string.indexOf": "18,149,800",
+    "string.indexOf + modulo": "97,438,647"
+  },
+  "100000.1": {
+    "string.split": "2,539,286",
+    "string.split + modulo": "2,498,223",
+    "string.indexOf": "23,625,719",
+    "string.indexOf + modulo": "14,498,243"
+  },
+  "1.000001": {
+    "string.split": "2,518,467",
+    "string.split + modulo": "2,506,827",
+    "string.indexOf": "21,329,911",
+    "string.indexOf + modulo": "14,175,207"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "Array.isArray": "445,667,912",
+  "Array.isArray (cached)": "404,197,801",
+  "toString": "12,148,383",
+  "toString (cached)": "11,406,394",
+  "value.constructor": "405,282,523",
+  "isType(value, Array)": "26,097,376"
+}

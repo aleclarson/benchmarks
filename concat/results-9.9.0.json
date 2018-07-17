@@ -1,0 +1,8 @@
+{
+  "concat": "2,293,411",
+  "push loops": "4,695,064",
+  "assign loops": "8,406,150",
+  "push.apply": "3,461,477",
+  "slice then push loop": "2,869,092",
+  "concat then push loop": "3,244,426"
+}

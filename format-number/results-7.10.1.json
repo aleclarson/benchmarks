@@ -1,0 +1,14 @@
+{
+  "long integer": {
+    "Replace using regex": "774,731",
+    "Split with empty string": "365,139"
+  },
+  "short integer": {
+    "Replace using regex": "532,706",
+    "Split with empty string": "500,763"
+  },
+  "short float": {
+    "Replace using regex": "1,437,133",
+    "Split with empty string": "892,571"
+  }
+}

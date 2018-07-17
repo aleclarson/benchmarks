@@ -1,0 +1,14 @@
+{
+  "With duplicates": {
+    "[].indexOf": "2,514,722",
+    "Object.keys": "3,741,260",
+    "Object.keys (hasOwn)": "4,848,894",
+    "Array.from": "245,741"
+  },
+  "Without duplicates": {
+    "[].indexOf": "2,498,393",
+    "Object.keys": "3,185,053",
+    "Object.keys (hasOwn)": "5,087,259",
+    "Array.from": "181,936"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "number": {
+    "isType": "2,809,804",
+    "isValid": "17,603,426",
+    "isValid (cached)": "4,447,875",
+    "valido.get().test": "14,598,227"
+  },
+  "number|string": {
+    "isType": "17,288,162",
+    "isValid": "752,271",
+    "isValid (cached)": "4,787,269",
+    "valido.get().test": "557,798"
+  },
+  "number?": {
+    "isType": "2,830,818",
+    "isValid": "3,958,450",
+    "isValid (cached)": "31,419,201",
+    "valido.get().test": "3,934,762"
+  },
+  "number? (undefined)": {
+    "isType": "60,594,111",
+    "isValid": "10,669,883",
+    "isValid (cached)": "38,992,873",
+    "valido.get().test": "10,233,539"
+  }
+}

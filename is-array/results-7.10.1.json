@@ -1,0 +1,6 @@
+{
+  "Array.isArray": "56,326,351",
+  "toString": "13,996,534",
+  "value.constructor": "67,743,068",
+  "isType(value, Array)": "7,210,721"
+}

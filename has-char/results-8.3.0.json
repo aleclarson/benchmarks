@@ -1,0 +1,12 @@
+{
+  "char exists": {
+    "string.indexOf": "328,074,101",
+    "string.includes": "9,187,262",
+    "regex.test": "8,454,867"
+  },
+  "char missing": {
+    "string.indexOf": "345,744,568",
+    "string.includes": "5,697,400",
+    "regex.test": "8,183,099"
+  }
+}

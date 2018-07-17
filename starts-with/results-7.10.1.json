@@ -1,0 +1,12 @@
+{
+  "return true": {
+    "String#startsWith": "12,346,219",
+    "RegExp ^": "9,197,266",
+    "String#slice + equality": "16,982,138"
+  },
+  "return false": {
+    "String#startsWith": "12,410,274",
+    "RegExp ^": "13,849,417",
+    "String#slice + equality": "17,371,240"
+  }
+}

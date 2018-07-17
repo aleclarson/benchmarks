@@ -1,0 +1,6 @@
+{
+  "new array": "5,035,174",
+  "array.length = 0": "3,438,381",
+  "array.slice(0, 0)": "3,598,657",
+  "array.length = 0 (when length > 0)": "3,466,483"
+}

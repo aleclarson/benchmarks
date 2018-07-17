@@ -1,0 +1,5 @@
+{
+  "Math.random().toString(36).slice(2)": "1,727,060",
+  "Random char loop": "1,301,653",
+  "Generate GUID": "380,118"
+}

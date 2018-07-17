@@ -1,0 +1,90 @@
+{
+  "array.length == 5": {
+    "slice(0)": "4,229,686",
+    "bound slice(0)": "4,088,843",
+    "for loop": "5,095,675",
+    "while loop": "14,942,205",
+    "spread": "2,268,634",
+    "array.map": "4,802,164",
+    "Array.apply": "3,257,674",
+    "concat": "4,035,211",
+    "concat no arg": "4,706,038"
+  },
+  "array.length == 10": {
+    "slice(0)": "4,137,060",
+    "bound slice(0)": "3,801,394",
+    "for loop": "3,291,376",
+    "while loop": "11,194,984",
+    "spread": "1,461,664",
+    "array.map": "2,987,417",
+    "Array.apply": "2,748,617",
+    "concat": "3,843,128",
+    "concat no arg": "4,578,286"
+  },
+  "array.length == 20": {
+    "slice(0)": "3,821,026",
+    "bound slice(0)": "3,447,157",
+    "for loop": "2,019,986",
+    "while loop": "8,218,224",
+    "spread": "778,284",
+    "array.map": "1,759,495",
+    "Array.apply": "2,185,900",
+    "concat": "3,805,664",
+    "concat no arg": "4,522,893"
+  },
+  "array.length == 50": {
+    "slice(0)": "2,773,131",
+    "bound slice(0)": "2,633,261",
+    "for loop": "883,193",
+    "while loop": "4,419,514",
+    "spread": "320,072",
+    "array.map": "766,333",
+    "Array.apply": "1,195,241",
+    "concat": "3,445,418",
+    "concat no arg": "4,277,881"
+  },
+  "array.length == 100": {
+    "slice(0)": "2,161,584",
+    "bound slice(0)": "2,011,088",
+    "for loop": "472,481",
+    "while loop": "2,664,999",
+    "spread": "170,110",
+    "array.map": "404,530",
+    "Array.apply": "707,467",
+    "concat": "3,103,329",
+    "concat no arg": "3,588,147"
+  },
+  "array.length == 200": {
+    "slice(0)": "1,434,321",
+    "bound slice(0)": "1,396,500",
+    "for loop": "234,024",
+    "while loop": "1,380,979",
+    "spread": "82,401",
+    "array.map": "204,847",
+    "Array.apply": "402,810",
+    "concat": "2,341,004",
+    "concat no arg": "2,598,069"
+  },
+  "array.length == 500": {
+    "slice(0)": "667,827",
+    "bound slice(0)": "631,068",
+    "for loop": "99,277",
+    "while loop": "613,922",
+    "spread": "35,218",
+    "array.map": "81,310",
+    "Array.apply": "160,784",
+    "concat": "1,216,561",
+    "concat no arg": "1,256,928"
+  },
+  "array.length == 1000": {
+    "slice(0)": "335,974",
+    "bound slice(0)": "324,438",
+    "for loop": "48,066",
+    "while loop": "324,500",
+    "spread": "17,768",
+    "array.map": "40,924",
+    "Array.apply": "85,249",
+    "concat": "691,018",
+    "concat no arg": "686,702"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "no delimiters": {
+    "while loop": "8,157,181",
+    "split": "8,353,502",
+    "match(regex1)": "8,077,488",
+    "match(regex2)": "6,886,590",
+    "regex1.exec": "6,450,180",
+    "regex2.exec": "9,447,842",
+    "indexOf + slice": "27,194,673",
+    "indexOf + split": "30,190,356",
+    "indexOf + match(regex1)": "29,920,237"
+  },
+  "one delimiter": {
+    "while loop": "5,543,451",
+    "split": "8,371,451",
+    "match(regex1)": "5,714,549",
+    "match(regex2)": "4,193,822",
+    "regex1.exec": "4,259,783",
+    "regex2.exec": "8,852,887",
+    "indexOf + slice": "6,952,856",
+    "indexOf + split": "6,557,972",
+    "indexOf + match(regex1)": "4,712,402"
+  },
+  "many delimiters": {
+    "while loop": "3,757,046",
+    "split": "8,325,164",
+    "match(regex1)": "3,220,961",
+    "match(regex2)": "1,698,828",
+    "regex1.exec": "2,081,463",
+    "regex2.exec": "9,498,674",
+    "indexOf + slice": "3,013,263",
+    "indexOf + split": "6,551,934",
+    "indexOf + match(regex1)": "2,935,421"
+  }
+}

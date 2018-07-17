@@ -1,0 +1,22 @@
+{
+  "number string": {
+    "isNaN Number(value)": "39,365,000",
+    "Number(value) >= 0": "46,693,629",
+    "isNaN parseInt(value)": "31,783,301",
+    "parseInt(value) >= 0": "36,326,959",
+    "numbers only regex": "11,604,603",
+    "numbers only regex (cached)": "18,369,628",
+    "regex test first char": "12,176,462",
+    "regex test first char (cached)": "13,406,810"
+  },
+  "alpha string": {
+    "isNaN Number(value)": "22,076,355",
+    "Number(value) >= 0": "23,932,344",
+    "isNaN parseInt(value)": "12,352,992",
+    "parseInt(value) >= 0": "13,382,365",
+    "numbers only regex": "16,514,881",
+    "numbers only regex (cached)": "15,953,309",
+    "regex test first char": "15,085,283",
+    "regex test first char (cached)": "18,524,618"
+  }
+}
