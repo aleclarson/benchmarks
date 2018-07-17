@@ -1,4 +1,4 @@
-# benchmarks
+# node-benchmarks
 
 Various benchmarks for NodeJS ⚡️
 
